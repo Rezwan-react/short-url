@@ -4,7 +4,7 @@ const ShortSchema = require("../../modal/ShortSchema");
 
 const makeShorturl = async (req, res) => {
     const { url } = req.body;
-
+    
     if (!url) {
         return res.status(400).send({ err: "url is required!" })
     }
@@ -17,7 +17,7 @@ const makeShorturl = async (req, res) => {
     const existUrl = await ShortSchema.findOneAndUpdate({ url }, { $set: { shortId: shorted } }, { new: true })
 
     if (existUrl) {
-        return res.status(200).send({
+        return  res.render("index", {
             message: "Shot url generate successfully",
             longURL: existUrl.url,
             shortUrl: `http://localhost:5000/${(existUrl.shortId)}`
@@ -30,8 +30,7 @@ const makeShorturl = async (req, res) => {
     })
 
     shortUrl.save()
-
-    res.status(200).send({
+    res.render("index", {
         message: "Shot url generate successfully",
         longURL: shortUrl.url,
         shortUrl: `http://localhost:5000/${(shortUrl.shortId)}`

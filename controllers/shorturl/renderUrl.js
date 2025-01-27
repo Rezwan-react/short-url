@@ -8,7 +8,7 @@ const renderUrl = async (req, res) => {
         return res.status(404).send("page not found!")
     }
 
-    res.render(existUrl.url);
+    res.redirect(existUrl.url);
 
 }
 
