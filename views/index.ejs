@@ -13,10 +13,13 @@
     <h1>Short URL Generator</h1>
     <p>Enter your long URL below to generate a shorter version.</p>
     <form class="url-form" action="http://localhost:5000/api/v1/generate/shortUrl" method="post">
-      <input type="text" placeholder="Paste your URL here..." class="url-input" name="url"
+      <input type="text" required placeholder="Paste your URL here..." class="url-input" name="url"
         value="<%= locals.longURL %>">
       <button type="submit" class="generate-btn">Generate</button>
     </form>
+    <% if (locals.error) { %>
+      <p class="error"><%= error %></p>     
+    <% } %>
 
     <% if(locals.shortUrl){ %>
       <div class="short-url">

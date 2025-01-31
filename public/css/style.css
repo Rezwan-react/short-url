@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-  background: white/5;
+  background: white/5 !important;
   border-radius: 12px;
   padding: 25px 35px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -83,6 +83,11 @@ p {
   font-size: 16px;
   color: #fff;
 }
+.error {
+  font-size: 16px;
+  color: #fff;
+}
+
 
 .result {
   display: flex;

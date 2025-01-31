@@ -6,10 +6,14 @@ const makeShorturl = async (req, res) => {
     const { url } = req.body;
     
     if (!url) {
-        return res.status(400).send({ err: "url is required!" })
+        return res.render("index", {
+            error: "url is required!"
+        })
     }
     if (!isUrlValid(url)) {
-        return res.status(400).send({ err: "url is not valid" })
+        return res.render("index", {
+            error: "url is not valid!"
+        })
     }
 
     const shorted = generateRandomShortId(url)

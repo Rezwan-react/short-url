@@ -9,7 +9,12 @@ const shortUrl = new Schema({
   shortId: {
     type: String,
     required: true
-  }
+  },
+  visitHistory: [{
+    clickedAt: {
+      type: Date,
+    }
+  }]
 });
 
 module.exports = mongoose.model('shortUrl', shortUrl);
