@@ -1,5 +1,6 @@
 const express = require('express');
 const dbConnect = require('./config/dbConnect');
+require('dotenv').config()
 const router = require('./router');
 const app = express()
 app.use(express.json())
@@ -16,4 +17,3 @@ dbConnect()
 app.listen(5000, () => {
     console.log("server is running");
 })
-// qkezPNC9y3VSdEZq
