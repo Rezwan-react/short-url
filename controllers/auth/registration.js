@@ -25,8 +25,7 @@ const registration = async (req, res) => {
         }
 
         const validatePassResult = validatePassword(password)
-        console.log(validatePassword(password));
-
+        
         if (validatePassResult) {
             return res.status(400).send(validatePassResult)
         }
