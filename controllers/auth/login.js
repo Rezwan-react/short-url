@@ -45,9 +45,13 @@ const login = async (req, res) => {
             }
         }, process.env.jwtKey, { expiresIn: '1d' });
 
-        const loginUser = await registrationSchema.findOne({ email: existinguser.email }).select("-password")
+        const loginUser = {
+            id : existinguser._id,
+            email : existinguser.email,
+            userName : existinguser.userName
+        }
 
-        res.status(200).cookie("assessToken", assessToken).send({ message: "successful", assessToken, existinguser })
+        res.status(200).cookie("assessToken", assessToken).send({ message: "successful", assessToken, loginUser })
     } catch (error) {
 
     }
