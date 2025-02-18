@@ -2,9 +2,9 @@
   <div class="register">
     <div class="form-wrapper">
       <h1>Create an Account</h1>
-      <form action="#" method="POST" class="form">
+      <form action="http://localhost:5000/api/v1/auth/registration" method="POST" class="form">
         <div class="input-field">
-          <input type="text" id="username" name="username" required placeholder=" " />
+          <input type="text" id="username" name="userName" required placeholder=" " />
           <label for="username">Username</label>
         </div>
         <div class="input-field">
@@ -14,10 +14,6 @@
         <div class="input-field">
           <input type="password" id="password" name="password" required placeholder=" " />
           <label for="password">Password</label>
-        </div>
-        <div class="input-field">
-          <input type="password" id="confirm-password" name="confirm-password" required placeholder=" " />
-          <label for="confirm-password">Confirm Password</label>
         </div>
         <button type="submit" class="sign-button">Sign Up</button>
       </form>

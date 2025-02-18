@@ -26,13 +26,13 @@ const login = async (req, res) => {
             return res.status(400).send(validatePassResult)
         }
 
-        const existinguser = await registrationSchema.findOne({ email })
+        const existingUser = await registrationSchema.findOne({email})
 
-        if (!existinguser) {
+        if (!existingUser) {
             return res.status(400).send("User not found")
         }
 
-        const match = await bcrypt.compare(password, existinguser.password);
+        const match = await bcrypt.compare(password, existingUser.password);
 
         if (!match) {
             return res.status(400).send("User not found")
@@ -40,18 +40,18 @@ const login = async (req, res) => {
 
         const assessToken = jwt.sign({
             data: {
-                id: existinguser._id,
-                email: existinguser.email
+                id: existingUser._id,
+                email: existingUser.email
             }
         }, process.env.jwtKey, { expiresIn: '1d' });
 
         const loginUser = {
-            id : existinguser._id,
-            email : existinguser.email,
-            userName : existinguser.userName
+            id : existingUser._id,
+            email : existingUser.email,
+            userName : existingUser.userName
         }
 
-        res.status(200).cookie("assessToken", assessToken).send({ message: "successful", assessToken, loginUser })
+        res.status(200).cookie("assessToken", assessToken).redirect("/")
     } catch (error) {
 
     }

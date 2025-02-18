@@ -1,23 +1,7 @@
 const generateRandomShortId = require("../../helpers/generateShortId");
 const isUrlValid = require("../../helpers/isUrlValid");
+const registrationSchema = require("../../modal/registrationSchema");
 const ShortSchema = require("../../modal/ShortSchema");
-
-const loggedUser = () => {
-    try {
-        const token = req.cookies
-
-        if (!token.assessToken) return res.status(400).send("unauthorized user")
-
-        var decoded = jwt.verify(token.assessToken, process.env.jwtKey);
-
-        if (decoded.data) {
-            return decoded.data
-
-        }
-    } catch (error) {
-        return false
-    }
-}
 
 const makeShorturl = async (req, res) => {
     const { url } = req.body;
@@ -34,13 +18,40 @@ const makeShorturl = async (req, res) => {
     }
 
     const shorted = generateRandomShortId(url)
-    const userData = loggedUser()
-    if(userData){
 
-    }else{
+    if (req.user) {
 
         const existUrl = await ShortSchema.findOneAndUpdate({ url }, { $set: { shortId: shorted } }, { new: true })
-    
+        if (existUrl) {
+
+            return res.render("index", {
+                message: "Shot url generate successfully",
+                longURL: existUrl.url,
+                shortUrl: `http://localhost:5000/${(existUrl.shortId)}`,
+                loggedUser: req.user
+            })
+        }
+
+        const shortUrl = new ShortSchema({
+            url: url,
+            shortId: shorted,
+            isAuth: true
+        })
+
+        shortUrl.save()
+
+        await registrationSchema.findByIdAndUpdate(req.user.id, { $push: { shortUrl: shortUrl._id } })
+
+        res.render("index", {
+            message: "Shot url generate successfully",
+            longURL: shortUrl.url,
+            shortUrl: `http://localhost:5000/${(shortUrl.shortId)}`
+        })
+
+    } else {
+
+        const existUrl = await ShortSchema.findOneAndUpdate({ url }, { $set: { shortId: shorted } }, { new: true })
+
         if (existUrl) {
             return res.render("index", {
                 message: "Shot url generate successfully",
@@ -48,12 +59,12 @@ const makeShorturl = async (req, res) => {
                 shortUrl: `http://localhost:5000/${(existUrl.shortId)}`
             })
         }
-    
+
         const shortUrl = new ShortSchema({
             url: url,
             shortId: shorted
         })
-    
+
         shortUrl.save()
         res.render("index", {
             message: "Shot url generate successfully",

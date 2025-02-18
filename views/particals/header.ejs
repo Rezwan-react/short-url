@@ -13,7 +13,12 @@
   <nav>
     <ul class="nav-links">
       <li><a href="/">Short-URL</a></li>
-      <li><a href="/loginPage">Login</a></li>
-      <li><a href="/registrationPage">Register</a></li>
+      <% if(locals.loggedUser){ %>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <% } else{ %> 
+          <li><a href="/loginPage">Login</a></li>
+          <li><a href="/registrationPage">Register</a></li>
+          <% } %>
+
     </ul>
   </nav>

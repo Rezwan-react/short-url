@@ -44,7 +44,7 @@ const registration = async (req, res) => {
     
             user.save()
     
-            res.send("successful")
+            res.redirect("/loginPage")
             
         });
         
