@@ -1,0 +1,44 @@
+<%- include("./particals/header.ejs") %>
+    <div>
+        
+        <% if (locals.urlHistory) { %>
+         <div>
+            
+            <div class="cont">
+                <div class="max-w-2xl w-full bg-white shadow-2xl rounded-2xl p-8">
+                    <h2 class="heading">Visit History</h2>
+                    <div class="info_heading">
+                       <h3><%= urlHistory.userName %></h3>
+                       <h3><%= urlHistory.email %></h3>
+                    </div>
+                    <% urlHistory.shortUrls.forEach(element => { %>
+                    <div class="info-box">
+                        <div class="ov">
+                            <p >Original URL: <%= element.url %> </a>
+
+                        </div>
+                        </p>
+                        <p>Short ID: <a href="http://localhost:5000/<%= element.shortId %>" target="_blank">http://localhost:5000/<%= element.shortId %></a></p>
+
+                        <p>Total visit : <%= element.visitHistory.length %> </p>
+                    
+                        <h3 class="sub-heading">date and time</h3>
+                    <div class="info-box">
+                        <ul class="visit-logs">
+                           <% element.visitHistory.forEach(item => { %>
+                            <li>📅 <%= item.clickedAt.toLocaleString() %> </li>
+                           <% }) %>                            
+                           
+                        </ul>
+                    </div>
+                    </div>
+                    
+                    
+                    <% }) %>
+                </div>
+            </div>
+         </div>
+        <% } %>
+    </div>
+</body>
+</html>

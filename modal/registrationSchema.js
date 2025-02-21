@@ -16,7 +16,7 @@ const registrationSchema = new Schema({
   },
   shortUrls: {
     ref: "shortUrl",
-    type: [Schema.Types.ObjectId],
+    type: [Schema.Types.ObjectId]
   }
 });
 

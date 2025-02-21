@@ -17,12 +17,14 @@ const makeShorturl = async (req, res) => {
         })
     }
 
-    const shorted = generateRandomShortId(url)
+    const shorted = generateRandomShortId(url)    
 
     if (req.user) {
 
         const existUrl = await ShortSchema.findOneAndUpdate({ url }, { $set: { shortId: shorted } }, { new: true })
         if (existUrl) {
+
+            await registrationSchema.findByIdAndUpdate(req.user.id, {$addToSet : {shortUrls : existUrl._id}})
 
             return res.render("index", {
                 message: "Shot url generate successfully",
@@ -40,7 +42,8 @@ const makeShorturl = async (req, res) => {
 
         shortUrl.save()
 
-        await registrationSchema.findByIdAndUpdate(req.user.id, { $push: { shortUrl: shortUrl._id } })
+        await registrationSchema.findByIdAndUpdate(req.user.id, { $push:{ shortUrls: shortUrl._id }})
+
 
         res.render("index", {
             message: "Shot url generate successfully",

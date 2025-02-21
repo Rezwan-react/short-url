@@ -3,6 +3,7 @@ const apiRoute = require('./api');
 const { renderUrl, visitHistory } = require('../controllers/shorturl/renderUrl');
 const { homePage, registrationPage, loginPage } = require('./staticSites');
 const valiUser = require('../middlewares/authMiddlewares');
+const registrationSchema = require('../modal/registrationSchema');
 const router = express.Router();
 
 router.use(process.env.BASE_API, apiRoute)
@@ -14,8 +15,20 @@ router.get("/loginPage", loginPage);
 
 router.get("/registrationPage", registrationPage);
 
-router.get("/deshboard", valiUser, async (req, res) => {
-    res.send(req.user)
+router.get("/visitHistory", valiUser, async (req, res) => {
+    if(req.user){
+        
+        const userData = await registrationSchema.findById(req.user.id).select("-password").populate("shortUrls")
+        console.log(userData);
+        
+        res.render("visitHistory",  {
+            urlHistory: userData,
+            loggedUser: req.user
+        });
+        
+    }else{
+        res.redirect("/loginPage")
+    }
 })
 
 router.get("/:shortId", renderUrl)
