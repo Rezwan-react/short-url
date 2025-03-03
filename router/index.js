@@ -15,18 +15,22 @@ router.get("/loginPage", loginPage);
 
 router.get("/registrationPage", registrationPage);
 
+router.get("/logout", (req, res) => {
+    res.clearCookie("assessToken").redirect("/loginPage")
+})
+
 router.get("/visitHistory", valiUser, async (req, res) => {
-    if(req.user){
-        
+    if (req.user) {
+
         const userData = await registrationSchema.findById(req.user.id).select("-password").populate("shortUrls")
         console.log(userData);
-        
-        res.render("visitHistory",  {
+
+        res.render("visitHistory", {
             urlHistory: userData,
             loggedUser: req.user
         });
-        
-    }else{
+
+    } else {
         res.redirect("/loginPage")
     }
 })

@@ -26,7 +26,7 @@ const login = async (req, res) => {
             return res.status(400).send(validatePassResult)
         }
 
-        const existingUser = await registrationSchema.findOne({email})
+        const existingUser = await registrationSchema.findOne({ email })
 
         if (!existingUser) {
             return res.status(400).send("User not found")
@@ -46,9 +46,9 @@ const login = async (req, res) => {
         }, process.env.jwtKey, { expiresIn: '1d' });
 
         const loginUser = {
-            id : existingUser._id,
-            email : existingUser.email,
-            userName : existingUser.userName
+            id: existingUser._id,
+            email: existingUser.email,
+            userName: existingUser.userName
         }
 
         res.status(200).cookie("assessToken", assessToken).redirect("/")
