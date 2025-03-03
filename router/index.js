@@ -1,5 +1,6 @@
 const express = require('express');
 const apiRoute = require('./api');
+const router = require('./routes/router');
 const { renderUrl, visitHistory } = require('../controllers/shorturl/renderUrl');
 const { homePage, registrationPage, loginPage } = require('./staticSites');
 const valiUser = require('../middlewares/authMiddlewares');
