@@ -4,7 +4,7 @@ a {
 }
 
 body {
-  background: rgb(140, 48, 97);
+  background: #360259;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +19,7 @@ body {
   text-align: center;
   width: 445px;
   margin-top: 150px;
-  box-shadow: 4px 4px 37px 7px rgba(170, 232, 76, 1);
+  box-shadow: 4px 4px 37px 7px rgba(211, 169, 217, 0.517);
 }
 
 nav {
