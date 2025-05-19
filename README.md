@@ -22,7 +22,7 @@ A simple and efficient URL shortener built with Node.js, Express, and MongoDB.
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/short-url.git
+    git clone[ https://github.com/yourusername/short-url.git](https://github.com/Rezwan-react/short-url.git)
     cd short-url
     ```
 
