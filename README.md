@@ -1,6 +1,5 @@
 # URL Shortener
 
-![URL Shortener Banner](https://raw.githubusercontent.com/yourusername/your-repo/main/assets/url-shortener-banner.png)
 
 A simple and efficient URL shortener built with Node.js, Express, and MongoDB.
 
@@ -29,7 +28,7 @@ A simple and efficient URL shortener built with Node.js, Express, and MongoDB.
 
 2. Install dependencies:
     ```bash
-    npm install
+    npm i install
     ```
 
 3. Set up your `.env` file (see `.env.example` for guidance).
@@ -56,7 +55,8 @@ MIT
 
 You can use a banner like this for your project (save as `assets/url-shortener-banner.png`):
 
-![Example URL Shortener Banner](https://i.imgur.com/1Q9Z1Zm.png)
+![Example URL Shortener Banner](![localhost_5000_](https://github.com/user-attachments/assets/0254cc44-1c00-4f16-8d51-ab553e494f57)
+)
 
 ---
 
