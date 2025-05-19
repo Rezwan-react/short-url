@@ -1,96 +1,63 @@
-# Short URL Generator
+# URL Shortener
 
-<p align="center">
-  <img src="docs/banner.svg" alt="Short URL Generator Banner" width="600"/>
-</p>
+![URL Shortener Banner](https://raw.githubusercontent.com/yourusername/your-repo/main/assets/url-shortener-banner.png)
 
-A simple and modern web application to shorten long URLs, track visit history, and manage your links with user authentication. Built with Node.js, Express, MongoDB, and EJS.
-
----
+A simple and efficient URL shortener built with Node.js, Express, and MongoDB.
 
 ## Features
 
-- 🔗 **Shorten URLs**: Instantly generate short links for any valid URL.
-- 👤 **User Registration & Login**: Secure authentication with JWT and password hashing.
-- 📜 **Visit History**: Authenticated users can view their shortened URLs and visit logs.
-- 🛡️ **Validation**: Email, password, and URL validation for security and reliability.
-- 🎨 **Responsive UI**: Clean, modern interface styled with CSS and EJS templates.
-
-## Project Structure
-
-```
-.
-├── config/              # Database connection
-├── controllers/         # Route controllers (auth, shorturl)
-├── helpers/             # Validation and utility functions
-├── middlewares/         # Authentication middleware
-├── modal/               # Mongoose schemas
-├── public/              # Static assets (CSS, images)
-├── router/              # Express routers
-├── views/               # EJS templates
-├── .env                 # Environment variables
-├── index.js             # App entry point
-└── package.json
-```
+- 🔗 Shorten long URLs to easy-to-share short links
+- 🚀 Fast redirection from short URLs to original URLs
+- 🖥️ Clean web interface using EJS templates
+- 🗄️ MongoDB for persistent storage
+- 🍪 Cookie support for enhanced functionality
 
 ## Getting Started
 
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/)
-- [MongoDB](https://www.mongodb.com/) (Atlas or local)
+- [MongoDB](https://www.mongodb.com/)
 
 ### Installation
 
-1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/yourusername/short-url.git
-   cd short-url
-   ```
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/short-url.git
+    cd short-url
+    ```
 
-2. **Install dependencies:**
-   ```sh
-   npm install
-   ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
 
-3. **Configure environment variables:**
-   - Copy `.env.example` to `.env` and fill in your MongoDB URI and JWT secret.
+3. Set up your `.env` file (see `.env.example` for guidance).
 
-4. **Start the server:**
-   ```sh
-   npm start
-   ```
-   The app will run at [http://localhost:5000](http://localhost:5000).
+4. Start the server:
+    ```bash
+    npm start
+    ```
+
+5. Visit [http://localhost:5000](http://localhost:5000) in your browser.
 
 ## Usage
 
-- Register a new account or log in.
-- Paste your long URL and generate a short link.
-- View your visit history and track link usage.
-
-## Screenshots
-
-<p align="center">
-  <img src="docs/screenshot-home.png" width="400" alt="Home Page"/>
-  <img src="docs/screenshot-history.png" width="400" alt="Visit History"/>
-</p>
+- Enter a long URL in the input field and receive a short URL.
+- Share the short URL; anyone visiting it will be redirected to the original link.
 
 ## License
 
-[ISC](LICENSE)
+MIT
 
 ---
 
-## Banner SVG (`docs/banner.svg`)
+## Example Image
 
-````svg
-<!-- filepath: docs/banner.svg -->
-<svg width="600" height="120" viewBox="0 0 600 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="600" height="120" rx="20" fill="#360259"/>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="38" font-family="Segoe UI, Arial, sans-serif" fill="#fff" font-weight="bold">
-    Short URL Generator
-  </text>
-  <text x="50%" y="80%" dominant-baseline="middle" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial, sans-serif" fill="#ff7e5f">
-    Shorten links & track visits easily!
-  </text>
-</svg>
+You can use a banner like this for your project (save as `assets/url-shortener-banner.png`):
+
+![Example URL Shortener Banner](https://i.imgur.com/1Q9Z1Zm.png)
+
+---
+
+Let me know if you want a custom SVG or ASCII art for your README!
